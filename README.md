@@ -1,6 +1,6 @@
 # FriendFinder
 
-In this application the User can answer few questions and find a compatible friend who has similar thought processes. This project is a full stack Node.js application deployed to Heroku, and anyone can access from different locations. 
+In this application the User can answer few questions and find a compatible friend who has similar thought processes. This project is a full stack Node.js application deployed to Heroku, and anyone who has the heroku project link can access from different locations. 
 
 The package has the following files - server.js, package.json, app/data/friends.js, app/public/home.html, app/public/survey.html, app/routing/apiRoutes.js, app/routing/htmlRoutes.js, gitignore (to ignore node_modules folder from uploading to git repo). 
 
