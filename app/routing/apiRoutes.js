@@ -7,17 +7,20 @@ var friendsList = require("../data/friends");
 // =============================================================
 
 module.exports = function(app) {
+
+	//get all friends
 	app.get("/api/friends", function(req, res) {
 		res.json(friendsList);
 	});
 
+	//find best match
 	app.post("/api/friends", function(req, res) {
 		//initialize variables
 		var newPerson;
 		var allDifferences = [];
 		//get new person's scores
 		newPerson = req.body.scores;
-	    console.log("new person scores:", newPerson);
+	    console.log("\n-----------------------------\nnew person scores:", newPerson);
 	    console.log("friends full array:", friendsList);
 	    //find compatibility
 	    for (var i = 0; i < friendsList.length; i++) {
@@ -34,18 +37,18 @@ module.exports = function(app) {
 	    	//store the differences in an array object with its index
 	    	allDifferences.push({"difference": difference, "index": i});
 	    }
-	    console.log("allDifferences:", allDifferences);
+	    console.log("\nallDifferences:", allDifferences);
 	    //sort the difference array
 	    allDifferences.sort(function(a,b){
 	    	return ( parseInt(a.difference) - parseInt(b.difference) );
 	    });
-	    console.log("allDifferences after sorting:", allDifferences);
+	    console.log("\nallDifferences after sorting:", allDifferences);
 
 	    //get the first match with low differences
-	    var matches = friendsList[allDifferences[0].index];
-	    console.log("\nMatch found:",matches);
+	    var matchFound = friendsList[allDifferences[0].index];
+	    console.log("\nMatch found:", matchFound);
 	    friendsList.push(req.body);
 	    console.log("\nfriendsList:", friendsList);
-	    res.json(matches);
+	    res.json(matchFound);
   });
 }

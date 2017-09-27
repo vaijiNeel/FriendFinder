@@ -152,13 +152,15 @@
 		<!-- Submit Button -->
 		<button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
  Submit</button>
-
+		
 		<footer>
 			<br>
 			<br>
-			<a href="/api/friends">API Friends List </a>
+			<a href="" id="clearAll">Clear All</a>
 			<span>&nbsp;|&nbsp;</span>
-			<a href="https://github.com/vaijiNeel/FriendFinder"> Github Repo</a>
+			<a href="/api/friends">API Friends List</a>
+			<span>&nbsp;|&nbsp;</span>
+			<a href="https://github.com/vaijiNeel/FriendFinder">Github Repo</a>
 			<br>
 			<br>
 		</footer>	
@@ -175,7 +177,7 @@
 			    </div>
 			    <div class="modal-body">
 		    		<h4 id="matchName"></h4>
-		    		<img id="matchImg" src="" width="100px" height="100px" alt-txt="photo">
+		    		<img id="matchImg" src="" onError="this.src='https://www.wpfreeware.com/wp-content/uploads/2014/09/placeholder-images.jpg' "width="100px" height="100px" alt-txt="photo">
 			    </div>
 			    <div class="modal-footer">
 			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -203,6 +205,12 @@
 		}
 
 		//---------------execution start-------------------
+		//clear all call
+
+		$("#clearAll").on("click", function() {
+			location.reload();
+		});
+
 		//submit call		
 		$("#submit").on("click", function(event) {
 	      	event.preventDefault();
@@ -211,9 +219,9 @@
 			if(validateForm())	{
 		    	// Here we grab the input data
 		    	var newPerson = {
-		        	personName: $("#name").val().trim(),
-		        	linkToPhoto: $("#photo").val(),
-		        	scores: [$("#q1").val(),$("#q2").val(),$("#q3").val(),$("#q4").val(),$("#q5").val(),$("#q6").val(),$("#q7").val(),$("#q8").val(),$("#q9").val(),$("#q10").val()]
+		        	"personName": $("#name").val().trim(),
+		        	"linkToPhoto": $("#photo").val(),
+		        	"scores": [$("#q1").val(),$("#q2").val(),$("#q3").val(),$("#q4").val(),$("#q5").val(),$("#q6").val(),$("#q7").val(),$("#q8").val(),$("#q9").val(),$("#q10").val()]
 		    	};
 		    	console.log(newPerson);
 
@@ -222,10 +230,12 @@
 
 		    	//AJAX post match
 				$.post(currentURL + "/api/friends", newPerson, function(data) {
+					// if(err) throw err;
 					//display modal
-					console.log(data.name, data.photo);
-	          		$("#matchName").text(data.name);
-		    		$('#matchImg').attr("src", data.photo);
+					console.log("data:",data);
+					console.log(data.personName, data.linkToPhoto);
+	          		$("#matchName").text(data.personName);
+		    		$('#matchImg').attr("src", data.linkToPhoto);
 
 			    	// Show the modal with the best match 
 			    	$("#matchModal").modal("toggle");
