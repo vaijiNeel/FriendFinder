@@ -34,7 +34,6 @@
 		<h4>Your mind is always buzzing with unexplored ideas and plans.</h4>
 		<select class="selectpicker" id="q1" style="width: 20% !important;">
 			<option value="" style="display:none">select an option</option>
-			<!-- <option value=""></option> -->
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -167,7 +166,6 @@
 	</div>
 
 	<!-- Modal -->
-
 	<div class="modal" id="matchModal">
 	  	<div class="modal-dialog">
 	    	<div class="modal-content">
@@ -224,7 +222,7 @@
 		        	"scores": [$("#q1").val(),$("#q2").val(),$("#q3").val(),$("#q4").val(),$("#q5").val(),$("#q6").val(),$("#q7").val(),$("#q8").val(),$("#q9").val(),$("#q10").val()]
 		    	};
 		    	console.log(newPerson);
-		    	// location.reload();
+
 		    	// Grab the URL of the website
 		    	var currentURL = window.location.origin;
 		    	
@@ -239,6 +237,8 @@
 			    	// Show the modal with the best match 
 			    	$("#matchModal").modal("toggle");
 	        	});
+
+	        	//clear input fields
 	        	$("#name").val("");
 	        	$("#photo").val("");
 	        	$("#q1").val(""); $("#q2").val(""); $("#q3").val(""); $("#q4").val(""); $("#q5").val(""); $("#q6").val(""); $("#q7").val(""); $("#q8").val(""); $("#q9").val(""); $("#q10").val("");
