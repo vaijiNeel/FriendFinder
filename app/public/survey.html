@@ -224,13 +224,12 @@
 		        	"scores": [$("#q1").val(),$("#q2").val(),$("#q3").val(),$("#q4").val(),$("#q5").val(),$("#q6").val(),$("#q7").val(),$("#q8").val(),$("#q9").val(),$("#q10").val()]
 		    	};
 		    	console.log(newPerson);
-
+		    	// location.reload();
 		    	// Grab the URL of the website
 		    	var currentURL = window.location.origin;
-
+		    	
 		    	//AJAX post match
 				$.post(currentURL + "/api/friends", newPerson, function(data) {
-					// if(err) throw err;
 					//display modal
 					console.log("data:",data);
 					console.log(data.personName, data.linkToPhoto);
@@ -239,13 +238,14 @@
 
 			    	// Show the modal with the best match 
 			    	$("#matchModal").modal("toggle");
-
 	        	});
+	        	$("#name").val("");
+	        	$("#photo").val("");
+	        	$("#q1").val(""); $("#q2").val(""); $("#q3").val(""); $("#q4").val(""); $("#q5").val(""); $("#q6").val(""); $("#q7").val(""); $("#q8").val(""); $("#q9").val(""); $("#q10").val("");
 			} else {
 				alert("Please fill out all fields before submitting!");
 			}
     	});
-
 	</script>
 
 </body>
