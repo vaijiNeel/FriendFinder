@@ -1,6 +1,6 @@
 # FriendFinder
 
-In this application the User can answer few questions and find a compatible friend who has similar thought processes. This project is a full stack Node.js application deployed to Heroku, and anyone who has the heroku project link can access from different locations. 
+In this application the User can answer few questions and find a compatible friend who has similar thought processes. This project is a full stack Node.js application, also deployed to Heroku. 
 
 The package has the following files - server.js, package.json, app/data/friends.js, app/public/home.html, app/public/survey.html, app/routing/apiRoutes.js, app/routing/htmlRoutes.js, gitignore (to ignore node_modules folder from uploading to git repo). 
 
@@ -13,5 +13,7 @@ The package has the following files - server.js, package.json, app/data/friends.
 * The app/routing/htmlRoutes.js holds the code to handle the api GET requests on /survey and * for anything else other than survey including /home, and displays the corresponding html page.
 * The app/routing/apiRoutes.js handles the GET request to list all friends in json format, and the POST request to find the best match. When the POST request is hit, the code will get the scores array for the current user and compares with each of the friend's scores in the existing pool, finds the difference (difference in each answer score and adds them all together), and stores the total difference and the friends array index in a temporary array. Once all the friend's scores are compared the temporary array will be sorted by the difference, and this will give me the best match at the 0th index. Then the POST request will return the index of 0 which has the best match back to the client.
 
+## Live Demo: 
+You can access app here - https://friendfinder-nodejs-apirouter.herokuapp.com/
 ## Contributor:
 * Vaiji Neelakandan
